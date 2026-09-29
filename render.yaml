@@ -1,0 +1,34 @@
+# NOTE: Render's free tier only supports "web" services. A true
+# "worker" service (no exposed port, like this bot needs) requires a
+# paid Render plan. If you're on the free tier, use Railway, Koyeb, or
+# a VPS instead - both fully support background workers for free/cheap.
+services:
+  - type: worker
+    name: rarebotshub-file-replace-bot
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 main.py
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: ADMINS
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: RareBotsHub
+      - key: FORCE_SUB_CHANNELS
+        sync: false
+      - key: FSUB_CHANNEL_CACHE_TTL
+        value: "1800"
+      - key: START_PICS
+        sync: false
+      - key: LOG_CHANNEL
+        sync: false
