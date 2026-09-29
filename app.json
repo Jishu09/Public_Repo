@@ -1,0 +1,63 @@
+{
+  "name": "RareBotsHub File Replace Bot",
+  "description": "Telegram bot to replace channel/group post media & captions instantly or in bulk, open to all users with live multi force-subscribe.",
+  "keywords": ["telegram", "bot", "pyrofork", "pyrogram", "file-replace", "mongodb"],
+  "repository": "https://github.com/yourusername/RareBotsHub-FileReplaceBot",
+  "logo": "https://telegra.ph/file/rarebotshub-logo.jpg",
+  "env": {
+    "API_ID": {
+      "description": "Your Telegram API ID from https://my.telegram.org",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Your Telegram API HASH from https://my.telegram.org",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "Bot token from @BotFather",
+      "required": true
+    },
+    "OWNER_ID": {
+      "description": "Your numeric Telegram user ID",
+      "required": true
+    },
+    "ADMINS": {
+      "description": "Space separated extra admin user IDs (optional)",
+      "required": false
+    },
+    "MONGO_URI": {
+      "description": "MongoDB Atlas connection string",
+      "required": true
+    },
+    "DB_NAME": {
+      "description": "Database name",
+      "required": false,
+      "value": "RareBotsHub"
+    },
+    "FORCE_SUB_CHANNELS": {
+      "description": "Comma separated channel usernames/-100 ids for multi force-subscribe (optional)",
+      "required": false
+    },
+    "FSUB_CHANNEL_CACHE_TTL": {
+      "description": "Seconds a resolved channel's admin-status/invite-link is cached (optional)",
+      "required": false,
+      "value": "1800"
+    },
+    "START_PICS": {
+      "description": "Comma separated image URLs to randomly show on /start (optional)",
+      "required": false
+    },
+    "LOG_CHANNEL": {
+      "description": "Channel ID (e.g. -1001234567890) to log new users (optional)",
+      "required": false
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "stack": "heroku-22",
+  "buildpacks": [{ "url": "heroku/python" }]
+}
